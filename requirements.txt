@@ -2,7 +2,8 @@ streamlit
 opencv-python-headless
 pytesseract
 pillow
+pandas
 numpy
-pdf2image
 plotly
+
 
