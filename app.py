@@ -971,8 +971,7 @@ with tab4:
             x=dates, y=scores,
             mode='lines',
             name='Daily Average',
-            PRIMARY_COLOR = "#6366F1"
-            line=dict(color=PRIMARY_COLOR, width=3),
+            line=dict(color=var(--primary), width=3),
             fill='tozeroy',
             fillcolor='rgba(99, 102, 241, 0.1)'
         ))
@@ -1277,4 +1276,3 @@ if 'answer_key' not in st.session_state:
     st.session_state.answer_key = {}
 if 'test_paper' not in st.session_state:
     st.session_state.test_paper = None
-
