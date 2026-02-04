@@ -10,13 +10,6 @@ import re
 import os
 
 # ============================================
-# 🔧 TESSERACT PATH FIX (Optional)
-# ============================================
-# Keep OCR for names / IDs if needed
-# if os.name != "nt":
-#     pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
-
-# ============================================
 # 🎨 PAGE CONFIGURATION
 # ============================================
 st.set_page_config(
@@ -29,30 +22,34 @@ st.set_page_config(
 # ============================================
 # 🔧 OMR DETECTION FUNCTION
 # ============================================
-def omr_detect_answers(uploaded_file):
+def omr_detect_answers(uploaded_file, debug=False):
     """Detect filled bubbles and return answers dict {question: option}"""
     with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp:
         tmp.write(uploaded_file.getbuffer())
         img_path = tmp.name
 
     img = cv2.imread(img_path)
+    orig_img = img.copy()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    # Adaptive threshold for different lighting
+    # Adaptive threshold to handle lighting variations
     thresh = cv2.adaptiveThreshold(
-        gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 15, 10
+        gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 11, 2
     )
-    thresh = cv2.GaussianBlur(thresh, (5,5), 0)
+    thresh = cv2.GaussianBlur(thresh, (3, 3), 0)
 
     # Find contours (potential bubbles)
     contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     bubbles = []
     for cnt in contours:
         area = cv2.contourArea(cnt)
-        if 300 < area < 5000:
+        if 50 < area < 2000:  # smaller area for tiny bubbles
             x, y, w, h = cv2.boundingRect(cnt)
-            if 0.8 < w/h < 1.2:
+            if 0.7 < w/h < 1.3:  # roughly square
                 bubbles.append((x, y, w, h))
+
+    if not bubbles:
+        return {}  # no bubbles detected
 
     # Sort bubbles into rows and columns
     bubbles = sorted(bubbles, key=lambda b: b[1])
@@ -76,13 +73,24 @@ def omr_detect_answers(uploaded_file):
     # Detect filled bubbles
     answers_detected = {}
     for q_index, row in enumerate(rows, start=1):
+        filled_option = None
         for opt_index, (x, y, w, h) in enumerate(row):
             roi = thresh[y:y+h, x:x+w]
             filled_ratio = cv2.countNonZero(roi) / (w*h)
-            if filled_ratio > 0.5:
-                option = chr(ord('A') + opt_index)
-                answers_detected[str(q_index)] = option
-                break  # Only one selection per row
+            if filled_ratio > 0.25:  # lower threshold for faint bubbles
+                filled_option = chr(ord('A') + opt_index)
+                if debug:
+                    cv2.rectangle(orig_img, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                break
+            elif debug:
+                cv2.rectangle(orig_img, (x, y), (x+w, y+h), (0, 0, 255), 1)
+
+        if filled_option:
+            answers_detected[str(q_index)] = filled_option
+
+    if debug:
+        st.subheader("🖼️ Debug Overlay")
+        st.image(cv2.cvtColor(orig_img, cv2.COLOR_BGR2RGB), use_container_width=True)
 
     return answers_detected
 
@@ -163,7 +171,7 @@ if st.button("🔬 Start Comparison", use_container_width=True):
     # ----------------------------
     # Detect answers from answer key
     # ----------------------------
-    key_answers = omr_detect_answers(st.session_state.answer_key_image)
+    key_answers = omr_detect_answers(st.session_state.answer_key_image, debug=True)
     st.subheader("🔍 OMR Detection (Answer Key)")
     st.json(key_answers)
 
@@ -173,7 +181,7 @@ if st.button("🔬 Start Comparison", use_container_width=True):
         # ----------------------------
         # Detect answers from student sheet
         # ----------------------------
-        student_answers = omr_detect_answers(paper)
+        student_answers = omr_detect_answers(paper, debug=True)
         st.subheader(f"🧪 OMR Detection (Student {i+1})")
         st.json(student_answers)
 
