@@ -12,12 +12,9 @@
       "dest": "api/index.py"
     }
   ],
-  "env": {
-    "PYTHONPATH": "/var/task"
-  },
-  "build": {
-    "env": {
-      "PYTHON_VERSION": "3.9"
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 10
     }
   }
 }
