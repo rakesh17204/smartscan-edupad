@@ -1,0 +1,36 @@
+# Ignore development files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.vscode/
+.idea/
+*.log
+*.sqlite3
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+.coverage
+.tox/
+.DS_Store
+Thumbs.db
+
+# Ignore large data files
+*.csv
+*.json
+*.pkl
+*.h5
+*.pth
+*.bin
+
+# Ignore test files
+test/
+tests/
+*.test.py
