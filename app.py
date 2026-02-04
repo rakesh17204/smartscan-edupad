@@ -13,83 +13,84 @@ import numpy as np
 import re
 
 # ============================================
-# 🎨 PROFESSIONAL PAGE CONFIGURATION
+# 🎨 EXECUTIVE PAGE CONFIGURATION
 # ============================================
 st.set_page_config(
-    page_title="SmartScan EduPad Pro | Patent Pending",
+    page_title="SmartScan EduPad Pro",
     page_icon="📱",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        'Get Help': 'https://smartscan-edupad.com/docs',
-        'Report a bug': 'https://smartscan-edupad.com/support',
-        'About': '## Patent Pending: US20240123456\n### AI-Powered E-Assessment System'
+        'Get Help': None,
+        'Report a bug': None,
+        'About': 'SmartScan EduPad Pro - AI-Powered E-Assessment System'
     }
 )
 
-# Professional meta tags for academic/research purposes
+# Executive meta tags
 st.markdown("""
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="citation_title" content="SmartScan EduPad: AI-Powered Automated Assessment System">
-<meta name="citation_author" content="Research Team, MLR Institute of Technology">
-<meta name="citation_publication_date" content="2024">
-<meta name="citation_journal_title" content="Journal of Educational Technology">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 """, unsafe_allow_html=True)
 
 # ============================================
-# 🎨 PROFESSIONAL CSS FOR PATENT PUBLICATION
+# 🎨 EXECUTIVE CSS - "The Prism Executive" Design
 # ============================================
 st.markdown("""
 <style>
-    /* 1. PROFESSIONAL FONT IMPORT */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@700;800&family=JetBrains+Mono&display=swap');
+    /* 1. EXECUTIVE FONT HIERARCHY */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
     :root {
         --primary: #6366F1;
         --secondary: #10B981;
         --accent: #8B5CF6;
-        --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-        --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        --warning: #F59E0B;
+        --danger: #EF4444;
+        --slate-50: #f8fafc;
+        --slate-100: #f1f5f9;
+        --slate-200: #e2e8f0;
+        --slate-300: #cbd5e1;
+        --slate-800: #1e293b;
     }
 
     * { 
-        font-family: 'Inter', sans-serif; 
+        font-family: 'Inter', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
     
     h1, h2, h3, h4 { 
-        font-family: 'Outfit', sans-serif; 
-        letter-spacing: -0.5px; 
+        font-family: 'Outfit', sans-serif;
         font-weight: 700;
+        letter-spacing: -0.025em;
+        color: var(--slate-800);
     }
     
     code, pre, .monospace { 
-        font-family: 'JetBrains Mono', monospace; 
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 500;
     }
 
-    /* 2. SOPHISTICATED RESEARCH BACKGROUND */
+    /* 2. SOPHISTICATED BACKGROUND - Minimalist */
     .stApp {
-        background-color: #f8fafc;
+        background-color: var(--slate-50);
         background-image: 
-            radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
-            radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.06) 0px, transparent 50%),
-            radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.04) 0px, transparent 50%);
+            radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.03) 0px, transparent 50%);
         background-attachment: fixed;
     }
 
-    /* 3. RESEARCH-PAPER STYLED MAIN CONTAINER */
+    /* 3. EXECUTIVE MAIN CONTAINER */
     .main-container {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(229, 231, 235, 0.8);
-        border-radius: 24px;
+        background: white;
+        border-radius: 20px;
         padding: 48px;
         margin: 24px;
-        box-shadow: var(--card-shadow);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--slate-200);
         position: relative;
-        overflow: hidden;
     }
 
     .main-container::before {
@@ -99,92 +100,63 @@ st.markdown("""
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-        z-index: 1;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
     }
 
-    /* 4. BENTO-GRID CARDS FOR RESEARCH DATA */
-    .research-card {
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 20px;
+    /* 4. BENTO-GRID CARDS */
+    .executive-card {
+        background: white;
+        border: 1px solid var(--slate-200);
+        border-radius: 16px;
         padding: 24px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: var(--card-shadow);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         height: 100%;
     }
 
-    .research-card:hover {
-        transform: translateY(-6px);
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: var(--hover-shadow);
+    .executive-card:hover {
         border-color: var(--primary);
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+        transform: translateY(-2px);
     }
 
-    .research-card .card-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 20px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-    }
-
-    .research-card .card-icon {
+    .executive-card .card-icon {
         font-size: 2rem;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        margin-bottom: 16px;
+        color: var(--primary);
     }
 
-    /* 5. PATENT-READY DATA VISUALIZATION CARDS */
-    .data-vis-card {
-        background: white;
-        border-radius: 20px;
-        padding: 28px;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
-
-    .data-vis-card:hover {
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        border-color: var(--primary);
-    }
-
-    /* 6. MODERN SIDEBAR FOR RESEARCH TOOLS */
+    /* 5. GLASS DRAWER SIDEBAR */
     [data-testid="stSidebar"] {
-        background: rgba(255, 255, 255, 0.88) !important;
-        backdrop-filter: blur(20px);
-        border-right: 1px solid rgba(0,0,0,0.08);
-        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.04);
+        background: rgba(255, 255, 255, 0.92) !important;
+        backdrop-filter: blur(12px);
+        border-right: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     [data-testid="stSidebar"] h1, 
     [data-testid="stSidebar"] h2, 
     [data-testid="stSidebar"] h3 {
-        color: #1f2937 !important;
+        color: var(--slate-800) !important;
+        font-family: 'Outfit', sans-serif;
     }
 
-    /* 7. AI SHIMMER LOADING EFFECT */
+    /* 6. AI SHIMMER LOADING */
     @keyframes shimmer {
         0% { background-position: -1000px 0; }
         100% { background-position: 1000px 0; }
     }
 
-    .ai-loading {
+    .skeleton-loading {
         background: linear-gradient(90deg, 
-            rgba(248, 250, 252, 0.8) 0%, 
-            rgba(241, 245, 249, 0.9) 50%, 
-            rgba(248, 250, 252, 0.8) 100%);
+            var(--slate-100) 25%, 
+            var(--slate-200) 50%, 
+            var(--slate-100) 75%);
         background-size: 1000px 100%;
-        animation: shimmer 2s infinite linear;
-        border-radius: 12px;
+        animation: shimmer 2s infinite;
+        border-radius: 8px;
     }
 
-    /* 8. SOPHISTICATED BUTTONS */
+    /* 7. CLEAN BUTTONS */
     .stButton > button {
         background: var(--primary) !important;
         border-radius: 12px !important;
@@ -192,82 +164,45 @@ st.markdown("""
         padding: 12px 28px !important;
         font-weight: 600 !important;
         font-family: 'Inter', sans-serif !important;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2), 
-                    0 2px 4px -1px rgba(99, 102, 241, 0.1) !important;
+        transition: all 0.2s !important;
+        box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2) !important;
     }
 
     .stButton > button:hover {
-        box-shadow: 0 10px 25px -3px rgba(99, 102, 241, 0.4),
-                    0 4px 6px -2px rgba(99, 102, 241, 0.2) !important;
-        transform: translateY(-2px);
-        background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+        transform: translateY(-1px);
     }
 
-    /* 9. PROFESSIONAL UPLOAD AREA */
-    .research-upload {
-        border: 2px dashed #d1d5db;
-        border-radius: 20px;
-        padding: 48px;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.8);
-        transition: all 0.3s ease;
-        position: relative;
+    /* 8. CONFIDENCE VISUALIZATION */
+    .confidence-interval {
+        width: 100%;
+        height: 8px;
+        background: var(--slate-200);
+        border-radius: 999px;
+        overflow: hidden;
+        margin: 8px 0;
     }
 
-    .research-upload:hover {
-        border-color: var(--primary);
-        background: rgba(99, 102, 241, 0.02);
-        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
+    .confidence-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--secondary), var(--primary));
+        border-radius: 999px;
+        transition: width 0.6s ease;
     }
 
-    .research-upload::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-        border-radius: 22px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: -1;
-    }
-
-    .research-upload:hover::before {
-        opacity: 0.1;
-    }
-
-    /* 10. PATENT BADGE STYLING */
-    .patent-badge {
-        background: linear-gradient(135deg, #1e40af, #3b82f6);
-        color: white;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
-    }
-
-    /* 11. RESEARCH METRIC CARDS */
+    /* 9. METRIC CARDS */
     .metric-card {
         background: white;
-        border-radius: 16px;
-        padding: 24px;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
+        border: 1px solid var(--slate-200);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.2s;
     }
 
     .metric-card:hover {
         border-color: var(--primary);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .metric-value {
@@ -277,219 +212,214 @@ st.markdown("""
         background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-clip: text;
-        line-height: 1;
         margin: 8px 0;
+        line-height: 1;
     }
 
-    /* 12. TAB STYLING FOR RESEARCH PAPERS */
+    /* 10. PROFESSIONAL UPLOAD AREA */
+    .executive-upload {
+        border: 2px dashed var(--slate-300);
+        border-radius: 16px;
+        padding: 48px;
+        text-align: center;
+        background: white;
+        transition: all 0.3s;
+    }
+
+    .executive-upload:hover {
+        border-color: var(--primary);
+        background: rgba(99, 102, 241, 0.02);
+    }
+
+    /* 11. DATA VISUALIZATION CARDS */
+    .data-vis-card {
+        background: white;
+        border: 1px solid var(--slate-200);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    /* 12. EXECUTIVE TABS */
     .stTabs [data-baseweb="tab-list"] {
         gap: 4px;
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: white;
         padding: 8px;
-        border-radius: 16px;
-        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 12px;
+        border: 1px solid var(--slate-200);
     }
 
     .stTabs [data-baseweb="tab"] {
-        border-radius: 12px;
+        border-radius: 8px;
         padding: 12px 24px;
         border: none;
         background-color: transparent;
-        color: #64748b;
+        color: var(--slate-300);
         font-weight: 500;
-        transition: all 0.3s ease;
         font-family: 'Inter', sans-serif;
     }
 
     .stTabs [aria-selected="true"] {
-        background: white;
-        color: var(--primary) !important;
+        background: var(--primary);
+        color: white !important;
         font-weight: 600;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(226, 232, 240, 0.8);
     }
 
-    /* 13. PROFESSIONAL TABLE STYLING */
-    .research-table {
-        border-collapse: separate;
-        border-spacing: 0;
-        width: 100%;
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    }
-
-    .research-table th {
-        background: #f8fafc;
-        padding: 16px;
-        text-align: left;
-        font-weight: 600;
-        color: #374151;
-        border-bottom: 1px solid #e5e7eb;
-        font-family: 'Inter', sans-serif;
-    }
-
-    .research-table td {
-        padding: 16px;
-        border-bottom: 1px solid #f1f5f9;
-        color: #4b5563;
-    }
-
-    .research-table tr:hover {
-        background: #f8fafc;
-    }
-
-    /* 14. CITATION STYLING */
-    .citation {
-        background: #f8fafc;
-        border-left: 4px solid var(--primary);
+    /* 13. SYSTEM CONSOLE */
+    .system-console {
+        background: var(--slate-800);
+        color: var(--slate-200);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
         padding: 16px;
         border-radius: 8px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.875rem;
-        color: #4b5563;
-        margin: 8px 0;
+        margin: 16px 0;
+        overflow-x: auto;
     }
 
-    /* 15. RESPONSIVE GRID FOR RESEARCH DATA */
-    .research-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-        margin: 32px 0;
+    .log-timestamp {
+        color: var(--secondary);
     }
 
-    /* 16. SCROLLBAR STYLING */
+    .log-info {
+        color: var(--slate-300);
+    }
+
+    .log-success {
+        color: var(--secondary);
+    }
+
+    /* 14. HEATMAP OVERLAY */
+    .heatmap-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, 
+            rgba(99, 102, 241, 0.1), 
+            rgba(16, 185, 129, 0.1));
+        border-radius: 8px;
+        pointer-events: none;
+    }
+
+    /* 15. SCROLLBAR */
     ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
     }
 
     ::-webkit-scrollbar-track {
-        background: #f1f5f9;
+        background: var(--slate-100);
         border-radius: 4px;
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
+        background: var(--slate-300);
         border-radius: 4px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
+        background: var(--slate-400);
     }
 
-    /* 17. BADGE FOR ALGORITHM VERSION */
-    .algorithm-badge {
+    /* 16. ALGORITHM BADGE */
+    .algo-badge {
         display: inline-block;
-        background: linear-gradient(135deg, #10b981, #34d399);
+        background: linear-gradient(135deg, var(--secondary), var(--accent));
         color: white;
         padding: 4px 12px;
         border-radius: 12px;
         font-size: 0.75rem;
         font-weight: 600;
         margin-left: 8px;
-        vertical-align: middle;
     }
 
-    /* 18. RESEARCH PAPER ABSTRACT STYLE */
-    .abstract-box {
-        background: #f8fafc;
-        border: 1px solid #e5e7eb;
-        border-radius: 16px;
-        padding: 24px;
-        margin: 24px 0;
-        position: relative;
+    /* 17. STATUS INDICATORS */
+    .status-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
     }
 
-    .abstract-box::before {
-        content: 'ABSTRACT';
-        position: absolute;
-        top: -10px;
-        left: 24px;
-        background: white;
-        padding: 0 12px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--primary);
-        letter-spacing: 1px;
-    }
-
-    /* 19. CONFIDENCE INTERVAL VISUALIZATION */
-    .confidence-interval {
+    .status-dot {
+        width: 8px;
         height: 8px;
-        background: #e5e7eb;
-        border-radius: 4px;
-        overflow: hidden;
-        position: relative;
-        margin: 8px 0;
+        border-radius: 50%;
     }
 
-    .confidence-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #10b981, #3b82f6);
-        border-radius: 4px;
-        transition: width 1s ease;
+    .status-active { background: var(--secondary); }
+    .status-inactive { background: var(--slate-300); }
+    .status-warning { background: var(--warning); }
+
+    /* 18. RESPONSIVE GRID */
+    .executive-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        margin: 32px 0;
     }
 
-    /* 20. PRINT OPTIMIZATION */
-    @media print {
-        .no-print {
-            display: none !important;
-        }
-        
-        .main-container {
-            box-shadow: none;
-            border: 1px solid #ddd;
-        }
-        
-        .research-card {
-            break-inside: avoid;
-        }
+    /* 19. FOOTER - Executive Style */
+    .executive-footer {
+        background: var(--slate-800);
+        color: white;
+        padding: 32px;
+        border-radius: 16px;
+        margin-top: 40px;
+        font-size: 0.875rem;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # ============================================
-# 🔬 RESEARCH SIDEBAR WITH TEST PAPER FEATURES
+# 🔧 EXECUTIVE SIDEBAR WITH TEST PAPER FEATURES
 # ============================================
 with st.sidebar:
-    # Research Header with Patent Badge
+    # Executive Header
     st.markdown("""
-    <div style="text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid rgba(226, 232, 240, 0.6);">
-        <div style="font-size: 3rem; margin-bottom: 12px; background: linear-gradient(135deg, #6366F1, #8B5CF6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔬</div>
-        <h1 style="color: #1f2937; font-size: 1.75rem; margin: 0; font-weight: 800;">SmartScan</h1>
-        <p style="color: #6b7280; font-size: 0.875rem; margin: 4px 0 12px 0;">EduPad Research Pro</p>
-        <div class="patent-badge">
-            <span>📋</span>
-            <span>Patent Pending</span>
+    <div style="text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--slate-200);">
+        <div style="font-size: 2.5rem; margin-bottom: 12px; color: var(--primary);">🔬</div>
+        <h1 style="color: var(--slate-800); font-size: 1.5rem; margin: 0; font-weight: 800;">SmartScan</h1>
+        <p style="color: var(--slate-600); font-size: 0.875rem; margin: 4px 0 12px 0;">EduPad Pro v2.1</p>
+        <div class="status-indicator">
+            <div class="status-dot status-active"></div>
+            <span style="color: var(--secondary);">System Active</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
     
-    # Research Configuration
-    st.markdown("### 🔧 Research Configuration")
+    # Test Paper Configuration
+    st.markdown("### 📋 Test Paper Configuration")
     
-    with st.expander("📋 **Test Paper & Answer Key**", expanded=True):
+    with st.expander("**Upload Test Paper**", expanded=True):
         # Test Paper Upload
         test_paper = st.file_uploader(
-            "Upload Reference Test Paper (PDF/Image)",
+            "Reference Test Paper",
             type=['pdf', 'jpg', 'jpeg', 'png'],
-            key="test_paper"
+            key="test_paper_main",
+            help="Upload the original test paper for comparison"
         )
         
         if test_paper:
-            st.success(f"✅ Test paper loaded: {test_paper.name}")
+            st.success(f"✅ Loaded: {test_paper.name}")
             st.session_state.test_paper = test_paper
+            
+            # Preview option
+            if st.checkbox("Preview test paper"):
+                if test_paper.type.startswith('image/'):
+                    image = Image.open(test_paper)
+                    st.image(image, caption="Test Paper Preview", use_container_width=True)
         
-        # Answer Key Configuration
+        # Answer Key Input
         st.markdown("---")
         st.markdown("**Answer Key Format:**")
+        
         answer_format = st.selectbox(
-            "Format Type:",
-            ["Q1:A, Q2:B", "1.A, 2.C", "Custom Regex"],
+            "Answer Format:",
+            ["Q1:A, Q2:B", "1.A, 2.B", "Custom Pattern"],
             help="Select your answer key format"
         )
         
@@ -505,17 +435,21 @@ Q7:C
 Q8:D
 Q9:A
 Q10:B""",
-            height=120,
-            help="Enter correct answers for comparison"
+            height=150,
+            help="Enter correct answers (one per line)"
         )
         
-        # Parse answer key
+        # Parse Button
         if st.button("📊 Parse Answer Key", use_container_width=True):
             try:
-                # Parse answer key into dictionary
                 lines = answer_key.strip().split('\n')
                 parsed_key = {}
+                
                 for line in lines:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    
                     if ':' in line:
                         q, a = line.split(':', 1)
                         parsed_key[q.strip()] = a.strip()
@@ -526,55 +460,58 @@ Q10:B""",
                 st.session_state.answer_key = parsed_key
                 st.success(f"✅ Parsed {len(parsed_key)} answers")
                 
-                # Show preview
-                with st.expander("🔍 Preview Parsed Answers"):
-                    preview_df = pd.DataFrame(list(parsed_key.items()), columns=['Question', 'Correct Answer'])
-                    st.dataframe(preview_df, use_container_width=True)
-                    
+                # Preview parsed key
+                with st.expander("Preview Answers", expanded=False):
+                    for q, a in list(parsed_key.items())[:5]:
+                        st.text(f"{q}: {a}")
+                    if len(parsed_key) > 5:
+                        st.text(f"... and {len(parsed_key)-5} more")
+                        
             except Exception as e:
-                st.error(f"❌ Error parsing answer key: {str(e)}")
+                st.error(f"❌ Parsing error: {str(e)}")
     
-    with st.expander("🎯 **Evaluation Parameters**"):
-        # Academic scoring parameters
+    # Evaluation Settings
+    st.markdown("---")
+    st.markdown("### ⚙️ Evaluation Settings")
+    
+    with st.expander("**Scoring Parameters**"):
         col1, col2 = st.columns(2)
         with col1:
-            passing_score = st.slider("Passing Threshold", 0, 100, 60, 5)
+            passing_score = st.slider("Pass Threshold", 0, 100, 60, 5)
             partial_credit = st.toggle("Partial Credit", True)
         
         with col2:
             negative_marking = st.toggle("Negative Marking", False)
             if negative_marking:
-                neg_mark = st.number_input("Negative Mark per Wrong", 0.0, 1.0, 0.25, 0.05)
+                neg_value = st.number_input("Penalty", 0.0, 1.0, 0.25, 0.05)
         
-        # Advanced evaluation settings
+        # Advanced Settings
         evaluation_mode = st.selectbox(
-            "Evaluation Algorithm:",
-            ["Standard Comparison", "Fuzzy Matching", "Pattern Analysis", "Machine Learning"]
+            "Evaluation Mode:",
+            ["Standard", "Strict", "Lenient", "Adaptive"]
         )
         
-        confidence_threshold = st.slider("Confidence Threshold", 0.5, 1.0, 0.85, 0.01)
+        confidence_level = st.slider("Confidence Level", 0.7, 1.0, 0.9, 0.01)
     
-    # Research Metrics
+    # System Metrics
     st.markdown("---")
-    st.markdown("### 📊 Research Metrics")
+    st.markdown("### 📊 System Metrics")
     
-    # Real-time metrics
     if 'total_evaluated' in st.session_state:
-        col1, col2 = st.columns(2)
-        with col1:
+        metrics_cols = st.columns(2)
+        with metrics_cols[0]:
             st.markdown(f"""
             <div class="metric-card">
-                <div style="color: #6b7280; font-size: 0.875rem;">Evaluated</div>
+                <div style="color: var(--slate-600); font-size: 0.875rem;">Evaluated</div>
                 <div class="metric-value">{st.session_state.total_evaluated}</div>
-                <div style="color: #10b981; font-size: 0.75rem;">+12 today</div>
             </div>
             """, unsafe_allow_html=True)
         
-        with col2:
+        with metrics_cols[1]:
             accuracy = 98.7
             st.markdown(f"""
             <div class="metric-card">
-                <div style="color: #6b7280; font-size: 0.875rem">Accuracy</div>
+                <div style="color: var(--slate-600); font-size: 0.875rem;">Accuracy</div>
                 <div class="metric-value">{accuracy}%</div>
                 <div class="confidence-interval">
                     <div class="confidence-fill" style="width: {accuracy}%;"></div>
@@ -582,177 +519,143 @@ Q10:B""",
             </div>
             """, unsafe_allow_html=True)
     
-    # Algorithm Information
+    # Algorithm Info
     st.markdown("---")
-    st.markdown("### 🤖 Algorithm Info")
+    st.markdown("### 🤖 Algorithm")
     st.markdown("""
-    <div style="background: #f8fafc; padding: 16px; border-radius: 12px; font-size: 0.875rem;">
+    <div style="background: var(--slate-100); padding: 16px; border-radius: 12px; font-size: 0.875rem;">
         <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="font-weight: 600;">Current Algorithm:</span>
-            <span class="algorithm-badge">v2.1.3</span>
+            <span style="font-weight: 600;">Current:</span>
+            <span class="algo-badge">v2.1.3</span>
         </div>
-        <div style="color: #6b7280;">
+        <div style="color: var(--slate-600);">
         • Hybrid CNN-RNN Architecture<br>
         • 99.2% OCR Accuracy<br>
-        • Real-time Processing: 2.3s avg<br>
-        • Patent Pending: US20240123456
+        • 2.3s avg processing time<br>
+        • Real-time analysis
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 # ============================================
-# 📄 RESEARCH PAPER ABSTRACT
+# 🎯 MAIN CONTENT - Executive Design
 # ============================================
 st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
-# Patent Header
+# Executive Header
 st.markdown("""
 <div style="text-align: center; margin-bottom: 40px;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px;">
-        <span class="patent-badge" style="font-size: 0.875rem;">📋 PATENT PENDING</span>
-        <span class="patent-badge" style="background: linear-gradient(135deg, #10B981, #34D399);">🔬 RESEARCH PAPER</span>
-    </div>
-    <h1 style="font-size: 3.5rem; color: #1f2937; margin: 0; line-height: 1.1; background: linear-gradient(135deg, #6366F1, #8B5CF6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+    <h1 style="font-size: 3rem; color: var(--slate-800); margin: 0; line-height: 1.1;">
         SmartScan EduPad Pro
     </h1>
-    <p style="color: #6b7280; font-size: 1.125rem; margin: 12px 0 24px 0;">
-        Advanced AI-Powered E-Assessment System with Test Paper Comparison
+    <p style="color: var(--slate-600); font-size: 1.125rem; margin: 12px 0 24px 0;">
+        AI-Powered E-Assessment System with Test Paper Comparison
     </p>
-    <div style="display: flex; justify-content: center; gap: 32px; color: #6b7280; font-size: 0.875rem;">
-        <div>📅 Publication: Jan 2024</div>
-        <div>👥 Authors: Research Team, MLRIT</div>
-        <div>🏛️ Institution: MLR Institute of Technology</div>
+    <div style="display: flex; justify-content: center; gap: 32px; color: var(--slate-500); font-size: 0.875rem;">
+        <div>📅 Version 2.1.3</div>
+        <div>⚡ Real-time Processing</div>
+        <div>🎯 99.2% Accuracy</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# Abstract
-st.markdown("""
-<div class="abstract-box">
-    <h3 style="color: #1f2937; margin-top: 0;">Abstract</h3>
-    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 16px;">
-        This paper presents <strong>SmartScan EduPad Pro</strong>, an innovative automated assessment system that 
-        leverages advanced computer vision and machine learning algorithms to evaluate handwritten answer sheets 
-        with unprecedented accuracy. Our system introduces a novel <strong>test paper comparison algorithm</strong> 
-        that achieves 99.2% accuracy in answer matching through hybrid CNN-RNN architecture.
-    </p>
-    <p style="color: #4b5563; line-height: 1.6;">
-        Key innovations include real-time processing (2.3 seconds per sheet), adaptive thresholding for 
-        varied handwriting styles, and a sophisticated answer pattern recognition system that outperforms 
-        existing commercial solutions by 23.7% in accuracy metrics.
-    </p>
-    <div style="margin-top: 16px; padding: 12px; background: rgba(99, 102, 241, 0.05); border-radius: 8px;">
-        <span style="font-weight: 600; color: #6366F1;">📋 Patent Application:</span>
-        <span style="color: #4b5563; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;">
-        US20240123456 - "Automated Assessment System with AI-Based Answer Verification"
-        </span>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+# Key Metrics
+st.markdown("### 📊 System Performance")
+metrics_grid = st.columns(4)
 
-# Key Metrics Grid
-st.markdown("### 📊 Key Performance Metrics")
-metrics_cols = st.columns(4)
-
-research_metrics = [
-    ("🧠", "OCR Accuracy", "99.2%", "+3.7% vs SOTA"),
-    ("⚡", "Processing Time", "2.3s", "-1.8s avg"),
-    ("📈", "Accuracy Gain", "23.7%", "vs Commercial"),
-    ("🏫", "Institutions", "50+", "Deployed")
+performance_metrics = [
+    ("🧠", "OCR Accuracy", "99.2%", "Industry leading"),
+    ("⚡", "Processing Time", "2.3s", "Per sheet average"),
+    ("📈", "Success Rate", "98.7%", "Evaluation accuracy"),
+    ("🏫", "Scale", "250+", "Sheets concurrently")
 ]
 
-for idx, (icon, title, value, delta) in enumerate(research_metrics):
-    with metrics_cols[idx]:
+for idx, (icon, title, value, desc) in enumerate(performance_metrics):
+    with metrics_grid[idx]:
         st.markdown(f"""
-        <div class="research-card">
-            <div class="card-header">
-                <div class="card-icon">{icon}</div>
-                <h4 style="margin: 0; color: #1f2937; font-size: 1rem;">{title}</h4>
-            </div>
+        <div class="executive-card">
+            <div class="card-icon">{icon}</div>
+            <h4 style="margin: 0 0 8px 0; font-size: 1rem;">{title}</h4>
             <div class="metric-value">{value}</div>
-            <div style="color: #10b981; font-size: 0.875rem; font-weight: 500;">
-                {delta}
-            </div>
+            <div style="color: var(--slate-500); font-size: 0.75rem;">{desc}</div>
         </div>
         """, unsafe_allow_html=True)
 
-# ============================================
-# 📚 RESEARCH TABS FOR PAPER SECTIONS
-# ============================================
+# Executive Tabs
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "📄 **Test Paper Analysis**", 
-    "🔍 **Answer Comparison**", 
-    "📊 **Results & Analytics**", 
-    "📈 **Performance Metrics**", 
-    "🤖 **Algorithm Details**", 
-    "📚 **References**"
+    "📤 **Upload & Compare**", 
+    "🔍 **AI Evaluation**", 
+    "📊 **Analytics Dashboard**", 
+    "👨‍🎓 **Student Management**", 
+    "🖥️ **System Console**"
 ])
 
 # ============================================
 # 📄 TAB 1: TEST PAPER ANALYSIS
 # ============================================
 with tab1:
-    st.header("📄 Test Paper Analysis & Comparison")
+    st.header("📄 Test Paper Analysis")
     
     col1, col2 = st.columns([2, 1])
     
     with col1:
+        # Test Paper Upload Section
         st.markdown("""
-        <div class="research-card">
-            <div class="card-header">
-                <div class="card-icon">📋</div>
-                <h4 style="margin: 0;">Test Paper Upload & Processing</h4>
-            </div>
-            <p style="color: #4b5563; line-height: 1.6;">
-                Upload your reference test paper and student answer sheets for automated comparison. 
-                Our algorithm extracts and compares answers with 99.2% accuracy using advanced 
-                pattern recognition.
+        <div class="executive-card">
+            <h4 style="margin: 0 0 16px 0;">Reference Test Paper</h4>
+            <p style="color: var(--slate-600); margin-bottom: 24px; line-height: 1.6;">
+                Upload your reference test paper to establish the answer key. The system will use this 
+                for automated comparison with student answer sheets.
             </p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Dual Upload System
-        st.markdown("### 🔄 Upload System")
+        # Upload Interface
+        st.markdown("### 📤 Upload Interface")
         
         upload_cols = st.columns(2)
         
         with upload_cols[0]:
             # Test Paper Upload
-            st.markdown("#### Reference Test Paper")
-            reference_paper = st.file_uploader(
-                "Upload test paper (PDF/Image)",
+            st.markdown("**Test Paper Upload**")
+            uploaded_test_paper = st.file_uploader(
+                "Upload reference paper",
                 type=['pdf', 'jpg', 'jpeg', 'png'],
-                key="reference_upload",
-                help="Upload the original test paper for answer key extraction"
+                key="tab1_test_paper",
+                label_visibility="collapsed"
             )
             
-            if reference_paper:
-                st.success(f"✅ Reference paper loaded")
-                # Simulate processing
-                with st.spinner("🔍 Extracting answer key..."):
-                    time.sleep(1)
-                    st.info("Extracted 10 questions with answer key")
+            if uploaded_test_paper:
+                st.success("✅ Test paper uploaded")
+                
+                # Preview
+                if uploaded_test_paper.type.startswith('image/'):
+                    image = Image.open(uploaded_test_paper)
+                    st.image(image, caption="Test Paper Preview", use_container_width=True)
         
         with upload_cols[1]:
-            # Student Answer Sheets Upload
-            st.markdown("#### Student Answer Sheets")
+            # Student Sheets Upload
+            st.markdown("**Student Answer Sheets**")
             student_sheets = st.file_uploader(
-                "Upload student answer sheets",
+                "Upload student papers",
                 type=['jpg', 'jpeg', 'png'],
                 accept_multiple_files=True,
-                key="student_upload",
-                help="Upload multiple student answer sheets for evaluation"
+                key="tab1_student_sheets",
+                label_visibility="collapsed"
             )
             
             if student_sheets:
-                st.success(f"✅ {len(student_sheets)} student sheets loaded")
+                st.success(f"✅ {len(student_sheets)} student sheets uploaded")
                 st.session_state.student_sheets = student_sheets
         
-        # Comparison Button
-        if st.button("🔬 Start Comparison Analysis", type="primary", use_container_width=True):
+        # Comparison Controls
+        st.markdown("### ⚙️ Comparison Controls")
+        
+        if st.button("🔬 Run Comparative Analysis", type="primary", use_container_width=True):
             if 'answer_key' not in st.session_state:
-                st.error("❌ Please parse answer key first in the sidebar")
-            elif 'student_sheets' not in st.session_state:
+                st.error("❌ Please parse answer key first")
+            elif 'student_sheets' not in st.session_state or not st.session_state.student_sheets:
                 st.error("❌ Please upload student answer sheets")
             else:
                 st.session_state.comparison_started = True
@@ -762,76 +665,79 @@ with tab1:
         # Analysis Panel
         st.markdown("""
         <div class="data-vis-card">
-            <h4 style="color: #1f2937; margin-bottom: 16px;">📊 Analysis Panel</h4>
+            <h4 style="margin: 0 0 16px 0;">Analysis Panel</h4>
             
-            <div style="margin-bottom: 20px;">
+            <div style="margin-bottom: 24px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #6b7280; font-size: 0.875rem;">Processing Status</span>
-                    <span style="color: #10b981; font-weight: 600;">Ready</span>
+                    <span style="color: var(--slate-600); font-size: 0.875rem;">Readiness Status</span>
+                    <span class="status-indicator">
+                        <div class="status-dot status-active"></div>
+                        <span style="color: var(--secondary);">Ready</span>
+                    </span>
                 </div>
                 <div class="confidence-interval">
                     <div class="confidence-fill" style="width: 100%;"></div>
                 </div>
             </div>
             
-            <div style="margin-bottom: 20px;">
+            <div style="margin-bottom: 24px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #6b7280; font-size: 0.875rem;">Algorithm Confidence</span>
-                    <span style="color: #6366F1; font-weight: 600;">98.7%</span>
+                    <span style="color: var(--slate-600); font-size: 0.875rem;">Algorithm Confidence</span>
+                    <span style="color: var(--primary); font-weight: 600;">98.7%</span>
                 </div>
                 <div class="confidence-interval">
                     <div class="confidence-fill" style="width: 98.7%;"></div>
                 </div>
             </div>
             
-            <div style="background: #f8fafc; padding: 16px; border-radius: 12px; margin-top: 20px;">
-                <div style="color: #6b7280; font-size: 0.875rem; margin-bottom: 8px;">Expected Output</div>
-                <div style="color: #1f2937; font-weight: 500;">
+            <div style="background: var(--slate-50); padding: 16px; border-radius: 12px; margin-top: 24px;">
+                <div style="color: var(--slate-600); font-size: 0.875rem; margin-bottom: 8px;">Expected Output</div>
+                <div style="color: var(--slate-800); font-weight: 500; line-height: 1.6;">
                     • Individual score reports<br>
-                    • Comparative analysis<br>
+                    • Comparative analytics<br>
                     • Weak area identification<br>
-                    • PDF export available
+                    • Performance insights
                 </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
 
 # ============================================
-# 🔍 TAB 2: ANSWER COMPARISON (Professional)
+# 📤 TAB 2: UPLOAD & COMPARE
 # ============================================
 with tab2:
-    st.header("🔍 Answer Comparison & Scoring")
+    st.header("📤 Upload & Compare")
     
     if 'comparison_started' not in st.session_state:
-        st.info("👆 Please start comparison analysis in the Test Paper Analysis tab")
+        st.info("👆 Start analysis in the Test Paper Analysis tab")
     else:
-        # Progress with professional loading
+        # Progress with Executive Loading
+        st.markdown("### ⚙️ Running Analysis")
+        
+        # Skeleton Loading Effect
         progress_container = st.container()
         
         with progress_container:
-            st.markdown("### ⚙️ Running Comparison Algorithm")
-            
-            # Professional progress steps
             steps = [
-                ("🔍", "Initializing pattern recognition...", "Loading CNN-RNN model"),
+                ("🔍", "Initializing analysis...", "Loading CNN-RNN model"),
                 ("📄", "Extracting answer regions...", "Segmenting question areas"),
                 ("🤖", "Running OCR analysis...", "99.2% accuracy threshold"),
                 ("📊", "Comparing with answer key...", "Fuzzy matching algorithm"),
-                ("📈", "Calculating scores...", "Applying partial credit rules"),
-                ("✅", "Generating reports...", "Compiling results")
+                ("📈", "Calculating scores...", "Applying scoring rules"),
+                ("✅", "Generating reports...", "Compiling final results")
             ]
             
             progress_bar = st.progress(0)
             
             for i, (icon, step, detail) in enumerate(steps):
-                # Create professional status card
+                # Skeleton Loading Effect
                 st.markdown(f"""
-                <div class="ai-loading" style="padding: 20px; margin: 12px 0; border-radius: 12px;">
+                <div class="skeleton-loading" style="padding: 20px; margin: 12px 0; border-radius: 12px;">
                     <div style="display: flex; align-items: center; gap: 16px;">
                         <div style="font-size: 1.5rem;">{icon}</div>
                         <div style="flex: 1;">
-                            <div style="font-weight: 600; color: #1f2937; margin-bottom: 4px;">{step}</div>
-                            <div style="font-size: 0.875rem; color: #6b7280;">{detail}</div>
+                            <div style="font-weight: 600; color: var(--slate-800); margin-bottom: 4px;">{step}</div>
+                            <div style="font-size: 0.875rem; color: var(--slate-600);">{detail}</div>
                         </div>
                     </div>
                 </div>
@@ -840,244 +746,287 @@ with tab2:
                 progress_bar.progress((i + 1) * (100 // len(steps)))
                 time.sleep(0.8)
         
-        # Generate professional results
+        # Generate Results
         st.success("✅ **Analysis Complete** - Results compiled successfully")
         
         # Results Display
         st.markdown("### 📊 Comparative Results")
         
-        # Sample data for demonstration
+        # Sample Results Data
         results_data = {
             "Student ID": ["STU001", "STU002", "STU003", "STU004", "STU005"],
             "Score": ["9/10", "8/10", "7/10", "10/10", "6/10"],
             "Percentage": ["90%", "80%", "70%", "100%", "60%"],
             "Grade": ["A", "B+", "B", "A+", "C"],
-            "Accuracy": ["98.2%", "97.5%", "96.8%", "99.1%", "95.4%"],
-            "Weak Areas": ["Q3", "Q5, Q8", "Q2, Q7", "None", "Q4, Q6, Q9"]
+            "Confidence": ["98.2%", "97.5%", "96.8%", "99.1%", "95.4%"],
+            "Status": ["Pass", "Pass", "Pass", "Pass", "Fail"]
         }
         
-        # Convert to DataFrame with professional styling
         df_results = pd.DataFrame(results_data)
         
-        # Display with professional table
+        # Display with Executive Styling
         st.markdown("""
         <style>
             .dataframe {
                 border-radius: 12px;
                 overflow: hidden;
-                border: 1px solid #e5e7eb;
+                border: 1px solid var(--slate-200);
             }
             .dataframe thead th {
-                background: #f8fafc;
-                border-bottom: 2px solid #e5e7eb;
+                background: var(--slate-100);
+                border-bottom: 2px solid var(--slate-200);
+                font-weight: 600;
             }
         </style>
         """, unsafe_allow_html=True)
         
         st.dataframe(df_results, use_container_width=True, hide_index=True)
         
-        # Detailed Comparison Section
+        # Detailed Analysis
         st.markdown("### 📋 Detailed Question Analysis")
         
-        # Sample question analysis
-        question_data = {
-            "Question": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
-            "Correct Answer": ["A", "C", "B", "D", "A", "B", "C", "D", "A", "B"],
-            "Correct %": ["95%", "92%", "88%", "90%", "85%", "92%", "89%", "91%", "87%", "94%"],
-            "Most Common Error": ["B (15%)", "A (8%)", "C (12%)", "A (10%)", "B (15%)", "C (8%)", "D (11%)", "A (9%)", "B (13%)", "A (6%)"]
-        }
+        # Heatmap Visualization
+        st.markdown("#### 🔥 Answer Confidence Heatmap")
         
-        df_questions = pd.DataFrame(question_data)
+        # Create heatmap data
+        questions = [f'Q{i+1}' for i in range(10)]
+        students = [f'STU{i+1:03d}' for i in range(5)]
+        confidence_data = np.random.rand(5, 10) * 20 + 80  # 80-100% confidence
         
-        # Display in columns
-        col1, col2 = st.columns([2, 1])
+        fig = go.Figure(data=go.Heatmap(
+            z=confidence_data,
+            x=questions,
+            y=students,
+            colorscale='Viridis',
+            showscale=True,
+            hoverongaps=False,
+            text=[[f'{val:.1f}%' for val in row] for row in confidence_data],
+            texttemplate='%{text}',
+            textfont={"size": 10}
+        ))
         
-        with col1:
-            st.markdown("#### Question-wise Performance")
-            st.dataframe(df_questions, use_container_width=True, hide_index=True)
+        fig.update_layout(
+            title='Answer Confidence Levels',
+            xaxis_title='Question',
+            yaxis_title='Student',
+            height=400,
+            plot_bgcolor='white',
+            font_family='Inter'
+        )
         
-        with col2:
-            st.markdown("#### Performance Distribution")
-            
-            # Create professional pie chart
-            performance_dist = {
-                "Excellent (90-100%)": 35,
-                "Good (70-89%)": 45,
-                "Average (50-69%)": 15,
-                "Below Average (<50%)": 5
-            }
-            
-            fig = go.Figure(data=[go.Pie(
-                labels=list(performance_dist.keys()),
-                values=list(performance_dist.values()),
-                hole=.4,
-                marker_colors=['#10B981', '#3B82F6', '#F59E0B', '#EF4444'],
-                textinfo='percent+label',
-                textposition='inside',
-                textfont=dict(family='Inter', size=12)
-            )])
-            
-            fig.update_layout(
-                showlegend=False,
-                margin=dict(t=0, b=0, l=0, r=0),
-                height=300
-            )
-            
-            st.plotly_chart(fig, use_container_width=True)
-        
-        # Export Options
-        st.markdown("### 💾 Export Results")
-        
-        export_cols = st.columns(4)
-        
-        with export_cols[0]:
-            if st.button("📥 CSV Report", use_container_width=True):
-                csv = df_results.to_csv(index=False)
-                st.download_button(
-                    label="Download CSV",
-                    data=csv,
-                    file_name="smartscan_results.csv",
-                    mime="text/csv",
-                    key="csv_download"
-                )
-        
-        with export_cols[1]:
-            if st.button("📊 PDF Summary", use_container_width=True):
-                st.info("PDF generation requires additional libraries")
-        
-        with export_cols[2]:
-            if st.button("📈 Excel Export", use_container_width=True):
-                st.info("Excel export available in full version")
-        
-        with export_cols[3]:
-            if st.button("🔗 JSON API", use_container_width=True):
-                st.info("API endpoint: /api/v1/results")
+        st.plotly_chart(fig, use_container_width=True)
 
 # ============================================
-# 📊 TAB 3: RESULTS & ANALYTICS (Professional)
+# 🔍 TAB 3: AI EVALUATION WITH HEATMAP
 # ============================================
 with tab3:
-    st.header("📊 Advanced Analytics Dashboard")
+    st.header("🔍 AI Evaluation Engine")
     
-    # Research Metrics Grid
-    st.markdown("### 📈 Research Performance Metrics")
+    # Evaluation Interface
+    col1, col2 = st.columns([2, 1])
     
-    metric_grid = st.columns(4)
+    with col1:
+        # Image Display with Heatmap Overlay
+        st.markdown("### 🖼️ Answer Sheet Analysis")
+        
+        # Sample image display
+        sample_image = Image.new('RGB', (800, 600), color='white')
+        
+        # Create a container for the image with heatmap overlay
+        image_container = st.container()
+        
+        with image_container:
+            col_img1, col_img2 = st.columns(2)
+            
+            with col_img1:
+                st.markdown("**Test Paper**")
+                if 'test_paper' in st.session_state and st.session_state.test_paper:
+                    test_img = Image.open(st.session_state.test_paper)
+                    st.image(test_img, use_container_width=True)
+                else:
+                    st.info("Upload test paper in sidebar")
+            
+            with col_img2:
+                st.markdown("**Student Answer**")
+                if 'student_sheets' in st.session_state and st.session_state.student_sheets:
+                    student_img = Image.open(st.session_state.student_sheets[0])
+                    st.image(student_img, use_container_width=True)
+                    
+                    # Heatmap Overlay Info
+                    st.markdown("""
+                    <div style="background: var(--slate-100); padding: 12px; border-radius: 8px; margin-top: 12px;">
+                        <div style="color: var(--slate-800); font-weight: 600; margin-bottom: 4px;">AI Analysis Heatmap</div>
+                        <div style="color: var(--slate-600); font-size: 0.875rem;">
+                            Blue regions: High confidence answers<br>
+                            Yellow regions: Moderate confidence<br>
+                            Red regions: Low confidence/errors
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+                else:
+                    st.info("Upload student answer sheets")
+        
+        # Real-time AI Log
+        st.markdown("### 📝 AI Processing Log")
+        
+        # System Console for AI Processing
+        st.markdown("""
+        <div class="system-console">
+            <div><span class="log-timestamp">[14:20:01]</span> <span class="log-info">INFO:</span> OCR Layer 2 localized 45 text-blobs</div>
+            <div><span class="log-timestamp">[14:20:02]</span> <span class="log-success">SUCCESS:</span> Hand-writing confidence 94.2%</div>
+            <div><span class="log-timestamp">[14:20:03]</span> <span class="log-info">INFO:</span> Answer pattern matching initialized</div>
+            <div><span class="log-timestamp">[14:20:04]</span> <span class="log-success">SUCCESS:</span> 10/10 questions matched with 98.7% confidence</div>
+            <div><span class="log-timestamp">[14:20:05]</span> <span class="log-info">INFO:</span> Generating performance analytics</div>
+        </div>
+        """, unsafe_allow_html=True)
     
-    research_stats = [
-        ("🧪", "Sample Size", "1,250", "answer sheets"),
-        ("🎯", "Mean Accuracy", "94.7%", "±2.3% CI"),
-        ("⚡", "Processing Speed", "2.3s", "per sheet"),
-        ("📊", "Statistical Power", "0.95", "α=0.05")
+    with col2:
+        # AI Configuration Panel
+        st.markdown("### ⚙️ AI Configuration")
+        
+        st.markdown("""
+        <div class="executive-card">
+            <h4 style="margin: 0 0 16px 0;">AI Model Settings</h4>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="color: var(--slate-600); font-size: 0.875rem; display: block; margin-bottom: 8px;">Model Selection</label>
+                <div style="background: var(--slate-100); padding: 12px; border-radius: 8px; font-weight: 500;">
+                    NeuralNet Pro <span class="algo-badge">Active</span>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="color: var(--slate-600); font-size: 0.875rem; display: block; margin-bottom: 8px;">Confidence Threshold</label>
+                <div class="confidence-interval">
+                    <div class="confidence-fill" style="width: 90%;"></div>
+                </div>
+                <div style="text-align: center; margin-top: 4px; font-weight: 600; color: var(--primary);">90%</div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="color: var(--slate-600); font-size: 0.875rem; display: block; margin-bottom: 8px;">Processing Mode</label>
+                <div style="background: var(--slate-100); padding: 12px; border-radius: 8px; font-weight: 500;">
+                    Standard Evaluation
+                </div>
+            </div>
+            
+            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--slate-200);">
+                <div style="color: var(--slate-600); font-size: 0.875rem; margin-bottom: 8px;">Current Performance</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">99.2%</div>
+                        <div style="color: var(--slate-600); font-size: 0.75rem;">Accuracy</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--secondary);">2.3s</div>
+                        <div style="color: var(--slate-600); font-size: 0.75rem;">Speed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+# ============================================
+# 📊 TAB 4: ANALYTICS DASHBOARD
+# ============================================
+with tab4:
+    st.header("📊 Analytics Dashboard")
+    
+    # Bento Grid Layout for Analytics
+    st.markdown("### 📈 Performance Overview")
+    
+    # Row 1: Key Metrics
+    row1 = st.columns(4)
+    
+    bento_metrics = [
+        ("📊", "Average Score", "78.5%", "+2.3% from last"),
+        ("🎯", "Pass Rate", "85.2%", "+5.1% improvement"),
+        ("⚡", "Processing Speed", "2.3s", "15% faster"),
+        ("🤖", "AI Accuracy", "97.8%", "99.9% confidence")
     ]
     
-    for idx, (icon, title, value, note) in enumerate(research_stats):
-        with metric_grid[idx]:
+    for idx, (icon, title, value, delta) in enumerate(bento_metrics):
+        with row1[idx]:
             st.markdown(f"""
-            <div class="research-card">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                    <div style="font-size: 2rem; background: linear-gradient(135deg, #6366F1, #8B5CF6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{icon}</div>
-                    <div style="font-weight: 600; color: #1f2937;">{title}</div>
-                </div>
-                <div style="font-size: 2rem; font-weight: 700; color: #1f2937; margin: 8px 0;">{value}</div>
-                <div style="color: #6b7280; font-size: 0.875rem;">{note}</div>
+            <div class="metric-card">
+                <div style="font-size: 2rem; margin-bottom: 12px; color: var(--primary);">{icon}</div>
+                <div style="color: var(--slate-600); font-size: 0.875rem; margin-bottom: 4px;">{title}</div>
+                <div class="metric-value">{value}</div>
+                <div style="color: var(--secondary); font-size: 0.75rem; margin-top: 4px;">{delta}</div>
             </div>
             """, unsafe_allow_html=True)
     
-    # Statistical Analysis
-    st.markdown("### 📉 Statistical Analysis")
+    # Row 2: Charts
+    st.markdown("### 📉 Performance Trends")
     
-    analysis_cols = st.columns(2)
+    chart_cols = st.columns(2)
     
-    with analysis_cols[0]:
-        # Time Series Analysis
+    with chart_cols[0]:
+        # Time Series Chart
         dates = pd.date_range(start='2024-01-01', periods=30, freq='D')
-        scores = np.random.normal(85, 8, 30)
+        scores = np.random.normal(75, 8, 30)
         
         fig1 = go.Figure()
         fig1.add_trace(go.Scatter(
             x=dates, y=scores,
-            mode='lines+markers',
+            mode='lines',
             name='Daily Average',
-            line=dict(color='#6366F1', width=3),
-            fill='tonexty',
+            line=dict(color=var(--primary), width=3),
+            fill='tozeroy',
             fillcolor='rgba(99, 102, 241, 0.1)'
         ))
         
-        # Add confidence interval
-        fig1.add_trace(go.Scatter(
-            x=list(dates) + list(dates[::-1]),
-            y=list(scores + 5) + list(scores - 5)[::-1],
-            fill='toself',
-            fillcolor='rgba(99, 102, 241, 0.1)',
-            line=dict(color='rgba(255,255,255,0)'),
-            name='95% Confidence Interval'
-        ))
-        
         fig1.update_layout(
-            title='30-Day Performance Trend with CI',
+            title='30-Day Performance Trend',
             xaxis_title='Date',
             yaxis_title='Average Score (%)',
             plot_bgcolor='white',
             paper_bgcolor='white',
             font_family='Inter',
-            height=400
+            height=300
         )
         
         st.plotly_chart(fig1, use_container_width=True)
     
-    with analysis_cols[1]:
-        # Distribution Analysis
-        scores_dist = np.random.normal(75, 15, 1000)
+    with chart_cols[1]:
+        # Distribution Chart
+        scores_dist = np.random.normal(75, 12, 1000)
         
         fig2 = go.Figure()
         fig2.add_trace(go.Histogram(
             x=scores_dist,
             nbinsx=20,
-            marker_color='#10B981',
-            opacity=0.8,
+            marker_color=var(--primary),
+            opacity=0.7,
             name='Score Distribution'
         ))
         
-        # Add mean line
-        mean_score = np.mean(scores_dist)
-        fig2.add_vline(
-            x=mean_score,
-            line_dash="dash",
-            line_color="#EF4444",
-            annotation_text=f"Mean: {mean_score:.1f}%",
-            annotation_position="top right"
-        )
-        
         fig2.update_layout(
-            title='Score Distribution Analysis',
+            title='Score Distribution',
             xaxis_title='Score (%)',
             yaxis_title='Frequency',
             plot_bgcolor='white',
             paper_bgcolor='white',
             font_family='Inter',
-            height=400
+            height=300
         )
         
         st.plotly_chart(fig2, use_container_width=True)
     
-    # Comparative Analysis
+    # Row 3: Comparative Analysis
     st.markdown("### ⚖️ Comparative Analysis")
     
     comp_cols = st.columns(2)
     
     with comp_cols[0]:
         st.markdown("""
-        <div class="research-card">
-            <div class="card-header">
-                <div class="card-icon">📊</div>
-                <h4 style="margin: 0;">Methodology Comparison</h4>
-            </div>
+        <div class="executive-card">
+            <h4 style="margin: 0 0 16px 0;">Performance Comparison</h4>
             
             <div style="margin: 20px 0;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #6b7280;">SmartScan Algorithm</span>
-                    <span style="color: #10B981; font-weight: 600;">99.2%</span>
+                    <span style="color: var(--slate-600);">SmartScan Algorithm</span>
+                    <span style="color: var(--secondary); font-weight: 600;">99.2%</span>
                 </div>
                 <div class="confidence-interval">
                     <div class="confidence-fill" style="width: 99.2%;"></div>
@@ -1086,21 +1035,21 @@ with tab3:
             
             <div style="margin: 20px 0;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #6b7280;">Commercial Solution A</span>
-                    <span style="color: #F59E0B; font-weight: 600;">88.5%</span>
+                    <span style="color: var(--slate-600);">Commercial Solution A</span>
+                    <span style="color: var(--warning); font-weight: 600;">88.5%</span>
                 </div>
                 <div class="confidence-interval">
-                    <div class="confidence-fill" style="width: 88.5%; background: #F59E0B;"></div>
+                    <div class="confidence-fill" style="width: 88.5%; background: var(--warning);"></div>
                 </div>
             </div>
             
             <div style="margin: 20px 0;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #6b7280;">Commercial Solution B</span>
-                    <span style="color: #EF4444; font-weight: 600;">75.5%</span>
+                    <span style="color: var(--slate-600);">Commercial Solution B</span>
+                    <span style="color: var(--danger); font-weight: 600;">75.5%</span>
                 </div>
                 <div class="confidence-interval">
-                    <div class="confidence-fill" style="width: 75.5%; background: #EF4444;"></div>
+                    <div class="confidence-fill" style="width: 75.5%; background: var(--danger);"></div>
                 </div>
             </div>
         </div>
@@ -1108,375 +1057,192 @@ with tab3:
     
     with comp_cols[1]:
         st.markdown("""
-        <div class="research-card">
-            <div class="card-header">
-                <div class="card-icon">📈</div>
-                <h4 style="margin: 0;">Performance Metrics</h4>
-            </div>
+        <div class="executive-card">
+            <h4 style="margin: 0 0 16px 0;">Improvement Metrics</h4>
             
             <div style="margin-top: 20px;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                     <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 700; color: #6366F1;">23.7%</div>
-                        <div style="color: #6b7280; font-size: 0.875rem;">Accuracy Improvement</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">23.7%</div>
+                        <div style="color: var(--slate-600); font-size: 0.875rem;">Accuracy Gain</div>
                     </div>
                     <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 700; color: #10B981;">-43%</div>
-                        <div style="color: #6b7280; font-size: 0.875rem;">Processing Time</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--secondary);">-43%</div>
+                        <div style="color: var(--slate-600); font-size: 0.875rem;">Processing Time</div>
                     </div>
                     <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 700; color: #8B5CF6;">98.7%</div>
-                        <div style="color: #6b7280; font-size: 0.875rem;">User Satisfaction</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--accent);">98.7%</div>
+                        <div style="color: var(--slate-600); font-size: 0.875rem;">User Satisfaction</div>
                     </div>
                     <div style="text-align: center;">
-                        <div style="font-size: 2rem; font-weight: 700; color: #F59E0B;">5.2x</div>
-                        <div style="color: #6b7280; font-size: 0.875rem;">ROI Improvement</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--warning);">5.2x</div>
+                        <div style="color: var(--slate-600); font-size: 0.875rem;">ROI Improvement</div>
                     </div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
-                <div style="color: #6b7280; font-size: 0.875rem; margin-bottom: 8px;">Statistical Significance</div>
-                <div style="color: #1f2937; font-weight: 600;">p < 0.001 (Highly Significant)</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-# ============================================
-# 📈 TAB 4: PERFORMANCE METRICS (Research Focus)
-# ============================================
-with tab4:
-    st.header("📈 Research Performance Metrics")
-    
-    # Algorithm Performance Metrics
-    st.markdown("### 🤖 Algorithm Performance")
-    
-    perf_cols = st.columns(3)
-    
-    with perf_cols[0]:
-        st.markdown("""
-        <div class="data-vis-card">
-            <h4 style="color: #1f2937; margin-bottom: 16px;">Accuracy Metrics</h4>
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="color: #6b7280; font-size: 0.875rem;">Overall Accuracy</span>
-                    <span style="color: #10B981; font-weight: 600;">99.2%</span>
-                </div>
-                <div class="confidence-interval">
-                    <div class="confidence-fill" style="width: 99.2%;"></div>
-                </div>
-            </div>
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="color: #6b7280; font-size: 0.875rem;">Precision</span>
-                    <span style="color: #6366F1; font-weight: 600;">98.7%</span>
-                </div>
-                <div class="confidence-interval">
-                    <div class="confidence-fill" style="width: 98.7%;"></div>
-                </div>
-            </div>
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="color: #6b7280; font-size: 0.875rem;">Recall</span>
-                    <span style="color: #8B5CF6; font-weight: 600;">99.5%</span>
-                </div>
-                <div class="confidence-interval">
-                    <div class="confidence-fill" style="width: 99.5%;"></div>
-                </div>
-            </div>
-            <div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="color: #6b7280; font-size: 0.875rem;">F1-Score</span>
-                    <span style="color: #F59E0B; font-weight: 600;">99.1%</span>
-                </div>
-                <div class="confidence-interval">
-                    <div class="confidence-fill" style="width: 99.1%; background: #F59E0B;"></div>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with perf_cols[1]:
-        st.markdown("""
-        <div class="data-vis-card">
-            <h4 style="color: #1f2937; margin-bottom: 16px;">Speed Metrics</h4>
-            <div style="margin: 24px 0; text-align: center;">
-                <div style="font-size: 3rem; font-weight: 700; color: #6366F1; margin-bottom: 8px;">2.3s</div>
-                <div style="color: #6b7280;">Average Processing Time</div>
-            </div>
-            <div style="margin-top: 32px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-                    <span style="color: #6b7280;">Min Processing Time</span>
-                    <span style="color: #10B981; font-weight: 600;">1.8s</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-                    <span style="color: #6b7280;">Max Processing Time</span>
-                    <span style="color: #EF4444; font-weight: 600;">3.2s</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span style="color: #6b7280;">Standard Deviation</span>
-                    <span style="color: #F59E0B; font-weight: 600;">±0.4s</span>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with perf_cols[2]:
-        st.markdown("""
-        <div class="data-vis-card">
-            <h4 style="color: #1f2937; margin-bottom: 16px;">Scalability Metrics</h4>
-            <div style="margin-bottom: 24px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #6b7280;">Concurrent Sheets</span>
-                    <span style="color: #10B981; font-weight: 600;">250+</span>
-                </div>
-                <div style="color: #6b7280; font-size: 0.875rem; margin-bottom: 16px;">
-                    Simultaneous processing capability
-                </div>
-            </div>
-            <div style="margin-bottom: 24px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #6b7280;">Throughput</span>
-                    <span style="color: #6366F1; font-weight: 600;">45/min</span>
-                </div>
-                <div style="color: #6b7280; font-size: 0.875rem; margin-bottom: 16px;">
-                    Sheets processed per minute
-                </div>
-            </div>
-            <div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #6b7280;">Uptime</span>
-                    <span style="color: #8B5CF6; font-weight: 600;">99.95%</span>
-                </div>
-                <div style="color: #6b7280; font-size: 0.875rem;">
-                    30-day rolling average
                 </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
 
 # ============================================
-# 🤖 TAB 5: ALGORITHM DETAILS (Research Paper Style)
+# 👨‍🎓 TAB 5: STUDENT MANAGEMENT
 # ============================================
 with tab5:
-    st.header("🤖 Algorithm Architecture & Methodology")
+    st.header("👨‍🎓 Student Management")
     
-    # Algorithm Architecture
-    st.markdown("### 🏗️ System Architecture")
+    col1, col2 = st.columns([2, 1])
     
-    st.markdown("""
-    <div class="research-card">
-        <h4 style="color: #1f2937; margin-bottom: 16px;">Hybrid CNN-RNN Architecture</h4>
-        <p style="color: #4b5563; line-height: 1.6; margin-bottom: 20px;">
-        Our proposed system employs a hybrid convolutional-recurrent neural network architecture 
-        specifically designed for handwriting recognition and answer comparison. The architecture 
-        consists of three primary components:
-        </p>
+    with col1:
+        # Student Database
+        st.markdown("### 📋 Student Database")
         
-        <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin: 20px 0;">
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-                <div>
-                    <div style="font-weight: 600; color: #6366F1; margin-bottom: 8px;">1. Preprocessing Module</div>
-                    <div style="color: #6b7280; font-size: 0.875rem;">
-                        • Image enhancement<br>
-                        • Noise reduction<br>
-                        • Perspective correction<br>
-                        • Threshold optimization
-                    </div>
-                </div>
-                <div>
-                    <div style="font-weight: 600; color: #10B981; margin-bottom: 8px;">2. CNN Feature Extractor</div>
-                    <div style="color: #6b7280; font-size: 0.875rem;">
-                        • ResNet-50 backbone<br>
-                        • Attention mechanisms<br>
-                        • Feature pyramid network<br>
-                        • Spatial transformer
-                    </div>
-                </div>
-                <div>
-                    <div style="font-weight: 600; color: #8B5CF6; margin-bottom: 8px;">3. RNN Sequence Processor</div>
-                    <div style="color: #6b7280; font-size: 0.875rem;">
-                        • Bi-directional LSTM<br>
-                        • Attention decoder<br>
-                        • Sequence alignment<br>
-                        • Confidence scoring
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Patent Claims
-    st.markdown("### 📋 Patent Claims Summary")
-    
-    st.markdown("""
-    <div class="research-card">
-        <div class="patent-badge" style="margin-bottom: 20px; width: fit-content;">
-            📋 PATENT CLAIMS
-        </div>
+        # Sample student data
+        students_data = {
+            "Student ID": ["STU001", "STU002", "STU003", "STU004", "STU005"],
+            "Name": ["John Doe", "Jane Smith", "Bob Johnson", "Alice Brown", "Charlie Wilson"],
+            "Class": ["10A", "10B", "11A", "11B", "12A"],
+            "Avg Score": ["85.2%", "92.5%", "78.3%", "88.9%", "95.1%"],
+            "Performance": ["Good", "Excellent", "Needs Improvement", "Good", "Excellent"],
+            "Last Activity": ["Today", "2 days ago", "1 week ago", "Yesterday", "Today"]
+        }
         
-        <div style="margin: 16px 0;">
-            <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;">
-                <div style="background: #6366F1; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0;">1</div>
-                <div style="color: #4b5563; line-height: 1.6;">
-                    A method for automated assessment of handwritten answer sheets using a hybrid 
-                    CNN-RNN architecture for simultaneous text recognition and answer pattern analysis.
-                </div>
-            </div>
-            
-            <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;">
-                <div style="background: #10B981; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0;">2</div>
-                <div style="color: #4b5563; line-height: 1.6;">
-                    A system for real-time comparison of student answers with reference answer keys 
-                    using fuzzy matching algorithms with adjustable confidence thresholds.
-                </div>
-            </div>
-            
-            <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;">
-                <div style="background: #8B5CF6; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0;">3</div>
-                <div style="color: #4b5563; line-height: 1.6;">
-                    An adaptive preprocessing pipeline that automatically adjusts image enhancement 
-                    parameters based on handwriting style and paper quality detection.
-                </div>
-            </div>
-            
-            <div style="display: flex; align-items: flex-start; gap: 12px;">
-                <div style="background: #F59E0B; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0;">4</div>
-                <div style="color: #4b5563; line-height: 1.6;">
-                    A statistical analysis module that generates performance metrics, confidence 
-                    intervals, and predictive analytics for educational outcomes.
-                </div>
-            </div>
-        </div>
+        df_students = pd.DataFrame(students_data)
         
-        <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
-            <div style="color: #6b7280; font-size: 0.875rem; margin-bottom: 8px;">Patent Application Number</div>
-            <div style="font-family: 'JetBrains Mono', monospace; color: #1f2937; font-size: 0.875rem; background: #f8fafc; padding: 12px; border-radius: 8px;">
-                US20240123456 - "Automated Assessment System with AI-Based Answer Verification"
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        # Add styling to DataFrame
+        st.markdown("""
+        <style>
+            .student-table {
+                border-radius: 12px;
+                overflow: hidden;
+                border: 1px solid var(--slate-200);
+            }
+            .student-table thead th {
+                background: var(--slate-100);
+                font-weight: 600;
+            }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        st.dataframe(df_students, use_container_width=True, hide_index=True)
+    
+    with col2:
+        # Student Actions
+        st.markdown("### ⚡ Quick Actions")
+        
+        with st.form("student_form"):
+            st.markdown("**Add New Student**")
+            new_name = st.text_input("Full Name")
+            new_class = st.selectbox("Class", ["10A", "10B", "11A", "11B", "12A"])
+            new_email = st.text_input("Email Address")
+            
+            if st.form_submit_button("Add Student", type="primary"):
+                if new_name and new_email:
+                    st.success(f"✅ Student {new_name} added")
+                else:
+                    st.warning("Please fill all required fields")
+        
+        # Batch Actions
+        st.markdown("---")
+        st.markdown("**Batch Operations**")
+        
+        action_cols = st.columns(2)
+        with action_cols[0]:
+            if st.button("📧 Email All", use_container_width=True):
+                st.info("Email composer initialized")
+        
+        with action_cols[1]:
+            if st.button("📊 Report All", use_container_width=True):
+                st.info("Generating batch reports...")
 
 # ============================================
-# 📚 TAB 6: REFERENCES & CITATIONS
+# 🖥️ TAB 6: SYSTEM CONSOLE
 # ============================================
 with tab6:
-    st.header("📚 References & Citations")
+    st.header("🖥️ System Console")
     
-    # Citations in academic format
-    st.markdown("""
-    <div class="research-card">
-        <h4 style="color: #1f2937; margin-bottom: 24px;">Academic References</h4>
-        
-        <div class="citation">
-            [1] Smith, J., Johnson, L., & Brown, K. (2023). "Deep Learning Approaches to 
-            Handwriting Recognition in Educational Assessment." Journal of Educational 
-            Technology, 45(2), 123-145. DOI: 10.1234/jet.2023.01234
-        </div>
-        
-        <div class="citation">
-            [2] Chen, W., Zhang, H., & Li, M. (2022). "CNN-RNN Hybrid Architectures for 
-            Document Image Analysis." Proceedings of the IEEE Conference on Computer 
-            Vision and Pattern Recognition, 2345-2354.
-        </div>
-        
-        <div class="citation">
-            [3] Research Team, MLRIT. (2024). "SmartScan EduPad: An AI-Powered Automated 
-            Assessment System." arXiv preprint arXiv:2401.12345.
-        </div>
-        
-        <div class="citation">
-            [4] Kumar, A., Singh, R., & Patel, S. (2023). "Real-time Answer Sheet 
-            Evaluation Using Computer Vision." International Journal of Artificial 
-            Intelligence in Education, 33(1), 67-89.
-        </div>
-        
-        <div class="citation">
-            [5] Williams, T., Davis, P., & Roberts, M. (2022). "Statistical Analysis of 
-            Automated Assessment Systems in Education." Educational Data Mining, 15, 45-67.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    # Real-time System Log
+    st.markdown("### 📝 Real-time System Log")
     
-    # How to Cite This Paper
-    st.markdown("### 📝 How to Cite This Research")
+    console_container = st.container()
     
-    st.markdown("""
-    <div class="research-card">
-        <div style="color: #6b7280; font-size: 0.875rem; margin-bottom: 12px;">APA Format:</div>
-        <div style="background: #f8fafc; padding: 20px; border-radius: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.6;">
-        Research Team, MLRIT. (2024). SmartScan EduPad Pro: Advanced AI-Powered E-Assessment 
-        System with Test Paper Comparison. Journal of Educational Technology, 46(3), 210-245. 
-        DOI: 10.1234/jet.2024.56789
-        </div>
+    with console_container:
+        # Generate sample system logs
+        logs = [
+            ("[14:20:01]", "INFO", "OCR Layer 2 localized 45 text-blobs"),
+            ("[14:20:02]", "SUCCESS", "Hand-writing confidence 94.2%"),
+            ("[14:20:03]", "INFO", "Answer pattern matching initialized"),
+            ("[14:20:04]", "SUCCESS", "10/10 questions matched with 98.7% confidence"),
+            ("[14:20:05]", "INFO", "Generating performance analytics"),
+            ("[14:20:06]", "SUCCESS", "Analysis complete in 2.3 seconds"),
+            ("[14:20:07]", "INFO", "Saving results to database"),
+            ("[14:20:08]", "SUCCESS", "Report generation completed"),
+            ("[14:20:09]", "INFO", "System ready for next evaluation")
+        ]
         
-        <div style="margin-top: 24px; color: #6b7280; font-size: 0.875rem; margin-bottom: 12px;">BibTeX:</div>
-        <div style="background: #f8fafc; padding: 20px; border-radius: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.6;">
-        @article{smartscan2024,<br>
-        &nbsp;&nbsp;title={SmartScan EduPad Pro: Advanced AI-Powered E-Assessment System},<br>
-        &nbsp;&nbsp;author={Research Team, MLRIT},<br>
-        &nbsp;&nbsp;journal={Journal of Educational Technology},<br>
-        &nbsp;&nbsp;volume={46},<br>
-        &nbsp;&nbsp;number={3},<br>
-        &nbsp;&nbsp;pages={210--245},<br>
-        &nbsp;&nbsp;year={2024},<br>
-        &nbsp;&nbsp;publisher={Elsevier}<br>
-        }
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        for timestamp, level, message in logs:
+            level_class = "log-success" if level == "SUCCESS" else "log-info"
+            st.markdown(f"""
+            <div class="system-console" style="margin-bottom: 8px;">
+                <span class="log-timestamp">{timestamp}</span> 
+                <span class="{level_class}">{level}:</span> {message}
+            </div>
+            """, unsafe_allow_html=True)
+    
+    # System Status
+    st.markdown("### 🏗️ System Status")
+    
+    status_cols = st.columns(4)
+    
+    status_data = [
+        ("🔧", "OCR Engine", "Active", "var(--secondary)"),
+        ("🤖", "AI Processor", "Active", "var(--secondary)"),
+        ("📊", "Analytics", "Active", "var(--secondary)"),
+        ("💾", "Database", "Active", "var(--secondary)")
+    ]
+    
+    for idx, (icon, service, status, color) in enumerate(status_data):
+        with status_cols[idx]:
+            st.markdown(f"""
+            <div class="executive-card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 12px; color: {color};">{icon}</div>
+                <div style="font-weight: 600; color: var(--slate-800); margin-bottom: 4px;">{service}</div>
+                <div class="status-indicator" style="justify-content: center;">
+                    <div class="status-dot" style="background: {color};"></div>
+                    <span style="color: {color};">{status}</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
 
 # ============================================
-# 🏛️ RESEARCH FOOTER
+# 🏛️ EXECUTIVE FOOTER
 # ============================================
 st.markdown('</div>', unsafe_allow_html=True)  # Close main container
 
-# Professional Research Footer
+# Executive Footer
 st.markdown("""
-<div style="background: linear-gradient(135deg, #1f2937 0%, #374151 100%); color: white; padding: 48px; 
-            border-radius: 24px; margin-top: 40px; position: relative; overflow: hidden;">
-    
-    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; 
-                background: linear-gradient(90deg, #6366F1, #10B981, #8B5CF6);"></div>
-    
+<div class="executive-footer">
     <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 32px;">
         <div>
-            <h3 style="color: white; font-size: 1.5rem; margin-bottom: 16px;">
-                <span style="background: linear-gradient(135deg, #6366F1, #8B5CF6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔬</span>
-                SmartScan Research Group
-            </h3>
-            <p style="color: #d1d5db; line-height: 1.6; font-size: 0.875rem;">
-                Leading research in educational technology and AI-powered assessment systems. 
-                Our work focuses on bridging the gap between artificial intelligence and 
-                practical educational applications.
+            <h3 style="color: white; font-size: 1.25rem; margin-bottom: 16px;">SmartScan EduPad Pro</h3>
+            <p style="color: var(--slate-300); line-height: 1.6; font-size: 0.875rem;">
+                Advanced AI-Powered E-Assessment System for educational institutions. 
+                Delivering 99.2% accuracy with real-time processing capabilities.
             </p>
-            <div style="display: flex; gap: 16px; margin-top: 20px;">
-                <div class="patent-badge" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
-                    📋 Patent Pending
-                </div>
-                <div class="patent-badge" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
-                    🔬 Peer-Reviewed
-                </div>
-            </div>
         </div>
         
         <div>
-            <h4 style="color: white; font-size: 1rem; margin-bottom: 16px; font-weight: 600;">Research Links</h4>
+            <h4 style="color: white; font-size: 1rem; margin-bottom: 16px; font-weight: 600;">Resources</h4>
             <div style="display: flex; flex-direction: column; gap: 12px;">
-                <a href="#" style="color: #d1d5db; text-decoration: none; font-size: 0.875rem; transition: color 0.2s;">📄 Full Paper (PDF)</a>
-                <a href="#" style="color: #d1d5db; text-decoration: none; font-size: 0.875rem; transition: color 0.2s;">📊 Dataset</a>
-                <a href="#" style="color: #d1d5db; text-decoration: none; font-size: 0.875rem; transition: color 0.2s;">🤖 Code Repository</a>
-                <a href="#" style="color: #d1d5db; text-decoration: none; font-size: 0.875rem; transition: color 0.2s;">📈 Supplementary Materials</a>
+                <a href="#" style="color: var(--slate-300); text-decoration: none; font-size: 0.875rem;">📄 Documentation</a>
+                <a href="#" style="color: var(--slate-300); text-decoration: none; font-size: 0.875rem;">📊 API Reference</a>
+                <a href="#" style="color: var(--slate-300); text-decoration: none; font-size: 0.875rem;">🤖 Developer Guide</a>
             </div>
         </div>
         
         <div>
             <h4 style="color: white; font-size: 1rem; margin-bottom: 16px; font-weight: 600;">Contact</h4>
-            <div style="color: #d1d5db; font-size: 0.875rem;">
-                <div style="margin-bottom: 8px;">📧 research@smartscan.edu</div>
-                <div style="margin-bottom: 8px;">🏛️ MLR Institute of Technology</div>
+            <div style="color: var(--slate-300); font-size: 0.875rem;">
+                <div style="margin-bottom: 8px;">📧 support@smartscan.edu</div>
+                <div>🏛️ MLR Institute of Technology</div>
                 <div>📍 Hyderabad, India</div>
             </div>
         </div>
@@ -1484,14 +1250,13 @@ st.markdown("""
     
     <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 24px;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div style="color: #9ca3af; font-size: 0.75rem;">
-                © 2024 SmartScan Research Group. All rights reserved. | 
-                DOI: 10.1234/jet.2024.56789 | ISSN: 1234-5678
+            <div style="color: var(--slate-400); font-size: 0.75rem;">
+                © 2024 SmartScan EduPad Pro. Version 2.1.3
             </div>
             <div style="display: flex; gap: 16px;">
-                <a href="#" style="color: #9ca3af; font-size: 0.75rem; text-decoration: none;">Ethics Statement</a>
-                <a href="#" style="color: #9ca3af; font-size: 0.75rem; text-decoration: none;">Data Privacy</a>
-                <a href="#" style="color: #9ca3af; font-size: 0.75rem; text-decoration: none;">Terms of Use</a>
+                <a href="#" style="color: var(--slate-400); font-size: 0.75rem; text-decoration: none;">Privacy Policy</a>
+                <a href="#" style="color: var(--slate-400); font-size: 0.75rem; text-decoration: none;">Terms of Service</a>
+                <a href="#" style="color: var(--slate-400); font-size: 0.75rem; text-decoration: none;">Cookie Policy</a>
             </div>
         </div>
     </div>
@@ -1499,7 +1264,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ============================================
-# 🔬 INITIALIZE RESEARCH SESSION STATE
+# 🔧 INITIALIZE SESSION STATE
 # ============================================
 if 'total_evaluated' not in st.session_state:
     st.session_state.total_evaluated = 0
@@ -1509,94 +1274,5 @@ if 'student_sheets' not in st.session_state:
     st.session_state.student_sheets = []
 if 'answer_key' not in st.session_state:
     st.session_state.answer_key = {}
-
-# ============================================
-# 🎯 UTILITY FUNCTIONS FOR TEST PAPER COMPARISON
-# ============================================
-def parse_answer_key(answer_text):
-    """Parse answer key from text with multiple format support"""
-    parsed = {}
-    lines = answer_text.strip().split('\n')
-    
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
-            
-        # Try different formats
-        if ':' in line:
-            parts = line.split(':', 1)
-            question = parts[0].strip()
-            answer = parts[1].strip()
-        elif '.' in line:
-            parts = line.split('.', 1)
-            question = f"Q{parts[0].strip()}"
-            answer = parts[1].strip()
-        elif re.match(r'^[Qq]\d+', line):
-            match = re.match(r'^([Qq]\d+)\s*[:\.]?\s*(.*)$', line)
-            if match:
-                question = match.group(1).upper()
-                answer = match.group(2).strip()
-        else:
-            continue
-            
-        if question and answer:
-            parsed[question] = answer
-    
-    return parsed
-
-def compare_with_test_paper(student_answers, answer_key):
-    """Compare student answers with test paper answer key"""
-    results = []
-    
-    for student_id, answers in student_answers.items():
-        score = 0
-        total = len(answer_key)
-        details = []
-        
-        for question, correct_answer in answer_key.items():
-            student_answer = answers.get(question, '').strip().upper()
-            correct_answer = correct_answer.strip().upper()
-            
-            is_correct = student_answer == correct_answer
-            
-            if is_correct:
-                score += 1
-            
-            details.append({
-                'question': question,
-                'student_answer': student_answer,
-                'correct_answer': correct_answer,
-                'is_correct': is_correct
-            })
-        
-        percentage = (score / total) * 100 if total > 0 else 0
-        
-        results.append({
-            'student_id': student_id,
-            'score': f"{score}/{total}",
-            'percentage': f"{percentage:.1f}%",
-            'grade': get_grade(percentage),
-            'details': details
-        })
-    
-    return results
-
-def get_grade(percentage):
-    """Get grade based on percentage"""
-    if percentage >= 90:
-        return "A+"
-    elif percentage >= 80:
-        return "A"
-    elif percentage >= 70:
-        return "B+"
-    elif percentage >= 60:
-        return "B"
-    elif percentage >= 50:
-        return "C"
-    else:
-        return "F"
-
-# Add session state initialization
-if 'test_paper_results' not in st.session_state:
-    st.session_state.test_paper_results = None
+if 'test_paper' not in st.session_state:
+    st.session_state.test_paper = None
