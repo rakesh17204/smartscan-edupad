@@ -1,50 +1,11 @@
 import os
-import sys
-import subprocess
-from flask import Flask, request, send_file, jsonify, Response
-import threading
-import time
-
-# Add current directory to Python path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
-# Store the Streamlit process
-streamlit_process = None
-
-def run_streamlit():
-    """Run Streamlit in background"""
-    global streamlit_process
-    
-    # Start Streamlit on port 8501
-    cmd = [
-        sys.executable, "-m", "streamlit", "run", 
-        "app.py", 
-        "--server.port=8501",
-        "--server.headless=true",
-        "--server.enableCORS=false",
-        "--server.enableXsrfProtection=false",
-        "--browser.serverAddress=0.0.0.0",
-        "--browser.gatherUsageStats=false"
-    ]
-    
-    streamlit_process = subprocess.Popen(
-        cmd,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE
-    )
-    
-    # Wait for Streamlit to start
-    time.sleep(5)
-    print("Streamlit started on port 8501")
-
-# Start Streamlit when app starts
-threading.Thread(target=run_streamlit, daemon=True).start()
-
 @app.route('/')
 def home():
-    return """
+    return render_template_string("""
     <!DOCTYPE html>
     <html>
     <head>
@@ -58,19 +19,44 @@ def home():
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: white;
+                margin: 0;
             }
             .container {
                 text-align: center;
-                background: rgba(255, 255, 255, 0.1);
-                padding: 40px;
-                border-radius: 20px;
-                backdrop-filter: blur(10px);
+                background: white;
+                padding: 50px;
+                border-radius: 25px;
                 box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                max-width: 800px;
+                margin: 20px;
             }
             h1 {
-                font-size: 3rem;
+                background: linear-gradient(90deg, #FF512F, #DD2476);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 3.5rem;
                 margin-bottom: 10px;
+            }
+            .features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                margin: 40px 0;
+            }
+            .feature-card {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 15px;
+                text-align: center;
+                transition: transform 0.3s;
+            }
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            .feature-icon {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
             }
             .btn {
                 display: inline-block;
@@ -80,24 +66,22 @@ def home():
                 border-radius: 50px;
                 text-decoration: none;
                 font-weight: bold;
-                margin-top: 20px;
+                margin: 20px 10px;
+                border: none;
+                cursor: pointer;
+                font-size: 1.1rem;
                 transition: transform 0.3s;
             }
             .btn:hover {
                 transform: scale(1.05);
             }
-            .loader {
-                border: 5px solid #f3f3f3;
-                border-top: 5px solid #FF512F;
-                border-radius: 50%;
-                width: 50px;
-                height: 50px;
-                animation: spin 1s linear infinite;
-                margin: 20px auto;
+            .demo-link {
+                color: #667eea;
+                text-decoration: none;
+                font-weight: bold;
             }
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
+            .demo-link:hover {
+                text-decoration: underline;
             }
         </style>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -105,56 +89,120 @@ def home():
     <body>
         <div class="container">
             <h1>📱 SmartScan EduPad Pro</h1>
-            <p>AI-Powered E-Assessment System</p>
-            <div class="loader"></div>
-            <p>Loading your application...</p>
-            <a href="/app" class="btn">🚀 Launch Application</a>
-            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
-                B.Tech Final Year Project 2024-2025
+            <p style="color: #666; font-size: 1.2rem; margin-bottom: 30px;">
+                AI-Powered E-Assessment System | B.Tech Final Year Project 2024-2025
             </p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📷</div>
+                    <h3>AI-Powered Scanning</h3>
+                    <p>Advanced image recognition</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Evaluation</h3>
+                    <p>Real-time results in seconds</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Smart Analytics</h3>
+                    <p>Interactive dashboards</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Cloud Native</h3>
+                    <p>Auto-scaling infrastructure</p>
+                </div>
+            </div>
+            
+            <div style="margin: 40px 0;">
+                <h2>🚀 Live Demo Options</h2>
+                <p style="color: #666; margin-bottom: 20px;">
+                    Choose your preferred demo method:
+                </p>
+                
+                <div>
+                    <a href="https://smartscan-edupad.streamlit.app" class="btn" target="_blank">
+                        🌐 View Streamlit Demo
+                    </a>
+                    <button class="btn" onclick="showLocalDemo()">
+                        🖥️ Run Local Simulation
+                    </button>
+                </div>
+                
+                <div id="localDemo" style="display: none; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 15px;">
+                    <h3>🖥️ Local Simulation Demo</h3>
+                    <p>This simulates the SmartScan EduPad interface:</p>
+                    <div id="simulationResult"></div>
+                    <button class="btn" onclick="runSimulation()" style="background: #4CAF50;">
+                        ▶️ Start Simulation
+                    </button>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(90deg, #1a237e, #0d47a1); color: white; padding: 30px; border-radius: 20px; margin-top: 40px;">
+                <h3 style="color: white; margin-bottom: 20px;">🎓 B.Tech Final Year Project</h3>
+                <p>Department of Computer Science & Engineering</p>
+                <p>MLR Institute of Technology | Batch 04</p>
+                <p>Guide: Dr. K. Jaya Sri</p>
+            </div>
         </div>
+        
         <script>
-            // Auto-redirect after 3 seconds
-            setTimeout(() => {
-                window.location.href = "/app";
-            }, 3000);
+            function showLocalDemo() {
+                document.getElementById('localDemo').style.display = 'block';
+            }
+            
+            function runSimulation() {
+                const steps = [
+                    "📄 Loading answer sheet...",
+                    "📷 Capturing image...",
+                    "⚡ Processing image...",
+                    "🔍 Extracting answers...",
+                    "✅ Evaluation complete!"
+                ];
+                
+                const resultDiv = document.getElementById('simulationResult');
+                resultDiv.innerHTML = '';
+                
+                let i = 0;
+                function nextStep() {
+                    if (i < steps.length) {
+                        resultDiv.innerHTML += `<div style="padding: 10px; margin: 5px; background: #e3f2fd; border-radius: 5px; animation: fadeIn 0.5s;">
+                            ${steps[i]}
+                        </div>`;
+                        i++;
+                        setTimeout(nextStep, 1000);
+                    } else {
+                        resultDiv.innerHTML += `<div style="padding: 15px; margin: 10px; background: #4CAF50; color: white; border-radius: 5px; font-weight: bold;">
+                            🎉 Simulation Complete! Processed 25 sheets in 45 seconds.
+                        </div>`;
+                    }
+                }
+                
+                nextStep();
+            }
         </script>
+        
+        <style>
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        </style>
     </body>
     </html>
-    """
-
-@app.route('/app')
-def streamlit_proxy():
-    """Proxy to Streamlit"""
-    import requests
-    try:
-        response = requests.get('http://localhost:8501', timeout=10)
-        return Response(response.content, mimetype='text/html')
-    except:
-        return """
-        <html>
-        <body style="background: #667eea; color: white; font-family: sans-serif; padding: 40px;">
-            <h1>Application Starting...</h1>
-            <p>Please wait a moment and refresh the page.</p>
-            <p>If this persists, check the deployment logs.</p>
-        </body>
-        </html>
-        """
-
-@app.route('/health')
-def health():
-    """Health check endpoint"""
-    return jsonify({"status": "healthy", "service": "SmartScan EduPad"})
+    """)
 
 @app.route('/api/status')
 def status():
-    """API status endpoint"""
-    return jsonify({
-        "app": "running",
-        "version": "1.0.0",
-        "timestamp": time.time(),
-        "endpoints": ["/", "/app", "/health", "/api/status"]
-    })
+    return {"status": "running", "service": "SmartScan EduPad", "version": "1.0.0"}
+
+@app.route('/health')
+def health():
+    return {"health": "ok"}
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
