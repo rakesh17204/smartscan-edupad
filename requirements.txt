@@ -5,5 +5,6 @@ pillow
 pandas
 numpy
 plotly
+scikit-image
 
 
