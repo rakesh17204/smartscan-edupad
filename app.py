@@ -20,7 +20,7 @@ st.set_page_config(
 )
 
 # ============================================
-# 🔧 OMR DETECTION FUNCTION (PRODUCTION-GRADE)
+# 🔧 OMR DETECTION FUNCTION (FOR BLUE-FILLED BUBBLES)
 # ============================================
 def omr_detect_answers(uploaded_file, debug=False):
     with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp:
@@ -30,56 +30,44 @@ def omr_detect_answers(uploaded_file, debug=False):
     img = cv2.imread(img_path)
     orig = img.copy()
 
-    # --------- Auto Deskew ---------
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    gray = cv2.GaussianBlur(gray, (5,5), 0)
-    edges = cv2.Canny(gray, 50, 150)
-    coords = np.column_stack(np.where(edges > 0))
-    if len(coords) > 0:
-        angle = cv2.minAreaRect(coords)[-1]
-        if angle < -45:
-            angle = -(90 + angle)
-        else:
-            angle = -angle
-        (h, w) = img.shape[:2]
-        M = cv2.getRotationMatrix2D((w//2, h//2), angle, 1.0)
-        img = cv2.warpAffine(img, M, (w, h),
-                             flags=cv2.INTER_CUBIC,
-                             borderMode=cv2.BORDER_REPLICATE)
-
-    # --------- Color-aware threshold ---------
+    # --- Convert to HSV to detect blue filled circles ---
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    v = hsv[:, :, 2]
 
-    thresh = cv2.adaptiveThreshold(
-        v, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-        cv2.THRESH_BINARY_INV, 15, 3
-    )
+    # Blue color range (tuned for your sheet)
+    lower_blue = np.array([90, 50, 50])
+    upper_blue = np.array([140, 255, 255])
 
-    kernel = np.ones((3,3), np.uint8)
-    thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
-    thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
+    mask = cv2.inRange(hsv, lower_blue, upper_blue)
 
-    # --------- Bubble Detection ---------
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    kernel = np.ones((5,5), np.uint8)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+
+    if debug:
+        st.subheader("🧪 Blue Mask Preview")
+        st.image(mask, use_container_width=True)
+
+    # --- Find filled bubbles ---
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
     bubbles = []
     for c in contours:
         area = cv2.contourArea(c)
-        if 60 < area < 3000:
+        if 500 < area < 10000:   # tuned for your bubble size
             x, y, w, h = cv2.boundingRect(c)
-            if 0.6 < w/h < 1.4:
+            if 0.7 < w/h < 1.3:
                 bubbles.append((x, y, w, h))
 
     if not bubbles:
         return {}
 
-    # --------- Smart Row Clustering ---------
+    # --- Group by rows ---
     bubbles = sorted(bubbles, key=lambda b: b[1])
     rows = []
     for b in bubbles:
         placed = False
         for row in rows:
-            if abs(row[0][1] - b[1]) < 20:
+            if abs(row[0][1] - b[1]) < 40:
                 row.append(b)
                 placed = True
                 break
@@ -89,27 +77,20 @@ def omr_detect_answers(uploaded_file, debug=False):
     for row in rows:
         row.sort(key=lambda b: b[0])
 
-    # --------- Filled Bubble Detection (FIXED) ---------
+    # --- Map to A/B/C/D ---
     answers = {}
     for qi, row in enumerate(rows, start=1):
-        fills = []
+        if len(row) < 2:
+            continue
+
         for oi, (x, y, w, h) in enumerate(row):
-            roi = thresh[y:y+h, x:x+w]
-            fill = cv2.countNonZero(roi) / (w*h)
-            fills.append((oi, fill))
-
-            if debug:
-                color = (0,255,0) if fill > 0.2 else (0,0,255)
-                cv2.rectangle(orig, (x,y), (x+w,y+h), color, 2)
-
-        oi, max_fill = max(fills, key=lambda x: x[1])
-        row_mean = np.mean([f for _, f in fills])
-
-        if max_fill > max(0.15, row_mean * 1.5):
             answers[str(qi)] = chr(ord('A') + oi)
 
+            if debug:
+                cv2.rectangle(orig, (x,y), (x+w,y+h), (0,255,0), 2)
+
     if debug:
-        st.subheader("🖼️ Debug Overlay")
+        st.subheader("🖼️ Final Detection")
         st.image(cv2.cvtColor(orig, cv2.COLOR_BGR2RGB), use_container_width=True)
 
     return answers
