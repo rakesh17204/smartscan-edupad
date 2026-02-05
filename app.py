@@ -89,25 +89,24 @@ def omr_detect_answers(uploaded_file, debug=False):
     for row in rows:
         row.sort(key=lambda b: b[0])
 
-    # --------- Filled Bubble Detection ---------
+    # --------- Filled Bubble Detection (FIXED) ---------
     answers = {}
     for qi, row in enumerate(rows, start=1):
-        best_fill = 0
-        best_opt = None
+        fills = []
         for oi, (x, y, w, h) in enumerate(row):
             roi = thresh[y:y+h, x:x+w]
             fill = cv2.countNonZero(roi) / (w*h)
+            fills.append((oi, fill))
 
             if debug:
                 color = (0,255,0) if fill > 0.2 else (0,0,255)
                 cv2.rectangle(orig, (x,y), (x+w,y+h), color, 2)
 
-            if fill > best_fill and fill > 0.2:
-                best_fill = fill
-                best_opt = chr(ord('A') + oi)
+        oi, max_fill = max(fills, key=lambda x: x[1])
+        row_mean = np.mean([f for _, f in fills])
 
-        if best_opt:
-            answers[str(qi)] = best_opt
+        if max_fill > max(0.15, row_mean * 1.5):
+            answers[str(qi)] = chr(ord('A') + oi)
 
     if debug:
         st.subheader("🖼️ Debug Overlay")
